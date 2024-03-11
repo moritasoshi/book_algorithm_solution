@@ -23,10 +23,11 @@ func tribonacci(n int) int {
 	if n == 2 {
 		return 1
 	}
-	if memo[n] != 0 {
-		return memo[n]
+	v, ok := memo[n]
+	if ok {
+		return v
 	}
-	val := tribonacci(n-1) + tribonacci(n-2) + tribonacci(n-3)
-	memo[n] = val
-	return val
+	// メモ化
+	memo[n] = tribonacci(n-1) + tribonacci(n-2) + tribonacci(n-3)
+	return memo[n]
 }
